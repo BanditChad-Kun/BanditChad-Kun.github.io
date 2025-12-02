@@ -87,3 +87,21 @@ footer {
     padding: 20px;
     font-size: 14px;
 }
+
+.genBtn {
+    margin-top: 20px;
+    padding: 12px 22px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    background: var(--card);
+    color: var(--text);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    transition: 0.2s;
+}
+
+.genBtn:hover {
+    background: var(--card-hover);
+    transform: scale(1.06);
+}
