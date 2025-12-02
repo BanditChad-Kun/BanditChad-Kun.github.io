@@ -1,29 +1,112 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>BanditDomain Fantasy Checkpoint</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Fantasy Power Generator</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #121212;
+        color: #fafafa;
+        padding: 30px;
+        transition: background 0.3s, color 0.3s;
+    }
+
+    #box {
+        background: #1e1e1e;
+        padding: 30px;
+        border-radius: 14px;
+        max-width: 400px;
+        margin: auto;
+        text-align: center;
+        box-shadow: 0 0 20px rgba(0,0,0,0.4);
+        animation: fadeIn 1.2s ease;
+    }
+
+    h1 {
+        font-size: 26px;
+        margin-bottom: 15px;
+        animation: slideDown 0.9s ease;
+    }
+
+    #power {
+        margin-top: 20px;
+        font-size: 22px;
+        font-weight: bold;
+        min-height: 30px;
+        opacity: 0;
+        transform: scale(0.9);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    button {
+        padding: 12px 25px;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        background: #4d6cff;
+        color: white;
+        margin-top: 20px;
+        transition: transform 0.2s;
+    }
+
+    button:hover {
+        transform: scale(1.07);
+    }
+
+    /* ✦ Fade-in animation for the whole box */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ✦ Title drop animation */
+    @keyframes slideDown {
+        from { opacity: 0; transform: translateY(-15px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+</style>
 </head>
+
 <body>
+<div id="box">
+    <h1>⚡ Fantasy Power Generator ⚡</h1>
+    <p>Click to reveal your power...</p>
 
-<header>
-    <h1>BanditDomain Fantasy Checkpoint</h1>
-    <p>Your rest spot to strange, mildly cool, and slightly unhinged stuff.</p>
+    <button onclick="generate()">Generate Power</button>
 
-    <!-- DARK MODE BUTTON -->
-    <button id="darkToggle" onclick="toggleDarkMode()">🌙 Dark Mode</button>
-</header>
+    <div id="power"></div>
+</div>
 
-<nav>
-    <a href="powers.html">⚡ Power Generator</a>
-    <a href="characters.html">⚡ Character Generator</a>
-</nav>
+<script>
+const powers = [
+    "Shadow Weaving — bend the shadows and the darkness.",
+    "Duplicater — duplicate your actions a second later.",
+    "Dream Walking — enter and control dreams.",
+    "Crystal Bone Armor — summon glowing crystal plating over your body.",
+    "Storm Pulse — just a walking storm of wind and rain.",
+    "Echo Step Teleportation — teleport between sounds.",
+    "Astral Thread Control — pull objects with invisible lines.",
+];
 
-<footer>
-    <p>Made just beacuse ✨</p>
-</footer>
+function generate() {
+    const p = powers[Math.floor(Math.random() * powers.length)];
+    const el = document.getElementById("power");
 
-<script src="script.js"></script>
+    // Reset for animation
+    el.style.opacity = "0";
+    el.style.transform = "scale(0.9)";
+
+    setTimeout(() => {
+        el.innerText = p;
+        el.style.opacity = "1";
+        el.style.transform = "scale(1)";
+    }, 100);
+}
+</script>
+
 </body>
 </html>
